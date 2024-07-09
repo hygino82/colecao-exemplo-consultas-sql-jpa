@@ -28,6 +28,6 @@ public class Autor {
     private String nome;
 
     @OneToMany(mappedBy = "autor")
-    private List<Livro> funcionarios = new ArrayList<>();
+    private List<Livro> livros = new ArrayList<>();
 
 }

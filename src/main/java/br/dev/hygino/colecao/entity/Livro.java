@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedNativeQuery;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +17,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "livro")
 @Data
 @NoArgsConstructor
+
+@NamedQuery(name = "Livro.buscarLivroPorId", query = "SELECT obj FROM Livro obj WHERE obj.id = :id")
+
+@NamedNativeQuery(name = "Livro.buscarPorTituloContendo", query = "SELECT * FROM livro WHERE UPPER(titulo_livro) LIKE CONCAT('%',UPPER(:titulo), '%')", resultClass = Livro.class)
 public class Livro {
 
     @Id
