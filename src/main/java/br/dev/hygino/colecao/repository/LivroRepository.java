@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import br.dev.hygino.colecao.entity.Livro;
+import br.dev.hygino.colecao.entity.projection.DadosLivro;
 
 @Repository
 public interface LivroRepository extends JpaRepository<Livro, Long> {
@@ -18,4 +19,9 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
 
     @Query(name = "Livro.buscarLivroPorId")
     Optional<Livro> buscarPorId(@Param("id") Long id);
+
+    @Query("""
+        select obj from Livro obj
+        """)
+    List<DadosLivro> buscarLivros();
 }

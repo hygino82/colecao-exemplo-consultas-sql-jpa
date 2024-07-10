@@ -22,7 +22,7 @@ import jakarta.persistence.EntityManagerFactory;
 public class SpringDataConfig {
 
     @Bean
-    public DataSource dataSource() {
+    public DataSource dataSourceH2() {
         HikariDataSource ds = new HikariDataSource();
         ds.setUsername("root");
         ds.setPassword("senha");
@@ -33,6 +33,17 @@ public class SpringDataConfig {
     }
 
     @Bean
+    public DataSource dataSourceMariaDB() {
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
+        dataSource.setJdbcUrl("jdbc:mariadb://localhost:3306/utfpr_bd_colecao");
+        dataSource.setUsername("root");
+        dataSource.setPassword("89631139");
+
+        return dataSource;
+    }
+
+    @Bean
     public EntityManagerFactory entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factory =
                 new LocalContainerEntityManagerFactoryBean();
@@ -40,10 +51,10 @@ public class SpringDataConfig {
         HibernateJpaVendorAdapter vendorAdapter =
                 new HibernateJpaVendorAdapter();
 
-        vendorAdapter.setGenerateDdl(true);
+        vendorAdapter.setGenerateDdl(false);
         vendorAdapter.setShowSql(true);
 
-        factory.setDataSource(dataSource());
+        factory.setDataSource(dataSourceMariaDB());
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan("br.dev.hygino.colecao.entity");//pacote onde estão as entidades
         factory.afterPropertiesSet();

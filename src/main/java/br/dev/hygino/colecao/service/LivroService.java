@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.dev.hygino.colecao.dto.LivroDTO;
 import br.dev.hygino.colecao.entity.Livro;
+import br.dev.hygino.colecao.entity.projection.DadosLivro;
 import br.dev.hygino.colecao.repository.LivroRepository;
 
 @Service
@@ -26,5 +27,10 @@ public class LivroService {
         Livro livro = repository.buscarPorId(id)
                 .orElseThrow(() -> new IllegalArgumentException("Não existe livro com o id: " + id));
         return new LivroDTO(livro);
+    }
+
+    @Transactional(readOnly = true)
+    public List<DadosLivro> buscarTodos() {
+       return repository.buscarLivros();
     }
 }
