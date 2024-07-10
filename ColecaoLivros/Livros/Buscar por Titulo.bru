@@ -1,0 +1,15 @@
+meta {
+  name: Buscar por Titulo
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8080/livro/busca?titulo=as
+  body: none
+  auth: none
+}
+
+params:query {
+  titulo: as
+}
