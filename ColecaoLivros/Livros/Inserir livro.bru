@@ -1,0 +1,18 @@
+meta {
+  name: Inserir livro
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8080/api/v1/livro
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "titulo": "Quincas Borba",
+    "autorId": 1
+  }
+}

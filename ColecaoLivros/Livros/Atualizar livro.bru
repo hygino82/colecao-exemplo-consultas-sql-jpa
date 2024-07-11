@@ -1,0 +1,18 @@
+meta {
+  name: Atualizar livro
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:8080/api/v1/livro/8
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "titulo": "Quincas BORBA",
+    "autorId": 1
+  }
+}
