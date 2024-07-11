@@ -1,6 +1,5 @@
 package br.dev.hygino.colecao.repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -14,10 +13,10 @@ import br.dev.hygino.colecao.entity.Autor;
 @Repository
 public interface AutorRepository extends JpaRepository<Autor, Long> {
 
-        @Query(nativeQuery = true, value = """
-                            SELECT * FROM autor WHERE UPPER(nome) LIKE CONCAT('%', UPPER(:nome), '%')
+        @Query("""
+                        SELECT obj FROM Autor obj WHERE UPPER(obj.nome) LIKE CONCAT('%', UPPER(:nome), '%')
                         """)
-        List<Autor> buscarAutorComNomeContendo(String nome);
+        Page<Autor> buscarPorNome(String nome, Pageable pageable);
 
         @Query("""
                              SELECT obj FROM Autor obj WHERE obj.id = :id

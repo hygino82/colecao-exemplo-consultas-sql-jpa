@@ -1,0 +1,17 @@
+meta {
+  name: Atualizar autor por Id
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8080/api/v1/autor/7
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nome": "Stephen King"
+  }
+}
