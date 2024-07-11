@@ -1,3 +1,15 @@
+CREATE table if not exists autor(
+cod_autor int not null auto_increment primary key,
+nome_autor varchar(50) not null
+);
+CREATE TABLE IF NOT EXISTS livro (
+    cod_livro INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    titulo_livro VARCHAR(100) NOT NULL,
+    cod_autor INT not null,
+    FOREIGN KEY (cod_autor) REFERENCES autor(cod_autor)
+);
+
+
 INSERT INTO autor(nome_autor) VALUES ('Machado de Assis');
 INSERT INTO autor(nome_autor) VALUES ('Guimarães Rosa');
 INSERT INTO autor(nome_autor) VALUES ('José de Alencar');

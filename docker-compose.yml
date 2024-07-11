@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 89631139 # Defina uma senha segura para o usuário root
+      MYSQL_DATABASE: utfpr_bd_colecao # O nome do banco de dados a ser criado automaticamente
+      MYSQL_USER: hygino # O nome do usuário do banco de dados
+      MYSQL_PASSWORD: 89631139 # A senha do usuário do banco de dados
+    ports:
+      - "3306:3306"  # Mapeia a porta do host para a porta do contêiner MariaDB
+    volumes:
+      - db_data:/var/lib/mysql  # Volume para persistir os dados do banco de dados
+
+volumes:
+  db_data:  # Define o volume para persistir os dados do MariaDB
+

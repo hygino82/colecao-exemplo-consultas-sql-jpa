@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.dev.hygino.colecao.dto.LivroDTO;
 import br.dev.hygino.colecao.entity.Livro;
-import br.dev.hygino.colecao.entity.projection.DadosLivro;
 import br.dev.hygino.colecao.repository.LivroRepository;
 
 @Service
@@ -30,7 +29,7 @@ public class LivroService {
     }
 
     @Transactional(readOnly = true)
-    public List<DadosLivro> buscarTodos() {
+    public List<LivroDTO> buscarTodos() {
        return repository.buscarLivros();
     }
 }

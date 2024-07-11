@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import br.dev.hygino.colecao.dto.LivroDTO;
 import br.dev.hygino.colecao.entity.Livro;
-import br.dev.hygino.colecao.entity.projection.DadosLivro;
 
 @Repository
 public interface LivroRepository extends JpaRepository<Livro, Long> {
@@ -23,5 +23,5 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
     @Query("""
         select obj from Livro obj
         """)
-    List<DadosLivro> buscarLivros();
+    List<LivroDTO> buscarLivros();
 }

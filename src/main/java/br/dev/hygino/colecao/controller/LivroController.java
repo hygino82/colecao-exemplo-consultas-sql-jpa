@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.dev.hygino.colecao.dto.LivroDTO;
-import br.dev.hygino.colecao.entity.projection.DadosLivro;
 import br.dev.hygino.colecao.service.LivroService;
 
 @RestController
@@ -33,8 +32,8 @@ public class LivroController {
     }
 
     @GetMapping
-    public ResponseEntity<List<DadosLivro>> buscarTodos() {
-        List<DadosLivro> lista = service.buscarTodos();
+    public ResponseEntity<List<LivroDTO>> buscarTodos() {
+        List<LivroDTO> lista = service.buscarTodos();
         return ResponseEntity.status(HttpStatus.OK).body(lista);
     }
 }
