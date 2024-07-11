@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.dev.hygino.colecao.dto.AutorDTO;
 import br.dev.hygino.colecao.dto.RequestAutorDTO;
+import br.dev.hygino.colecao.entity.projections.AutorData;
 import br.dev.hygino.colecao.service.AutorService;
 import jakarta.validation.Valid;
 
@@ -56,5 +57,10 @@ public class AutorController {
     public ResponseEntity<Void> removerAutor(@PathVariable Long id) {
         this.autorService.removerAutor(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("teste")
+    public AutorData teste() {
+        return this.autorService.teste();
     }
 }

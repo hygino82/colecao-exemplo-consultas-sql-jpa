@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.dev.hygino.colecao.dto.AutorDTO;
 import br.dev.hygino.colecao.dto.RequestAutorDTO;
 import br.dev.hygino.colecao.entity.Autor;
+import br.dev.hygino.colecao.entity.projections.AutorData;
 import br.dev.hygino.colecao.repository.AutorRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
@@ -70,5 +71,10 @@ public class AutorService {
         } catch (DataIntegrityViolationException ex) {
             throw new IllegalArgumentException("Não é possível excluir um autor com livros cadastrados");
         }
+    }
+
+    @Transactional(readOnly = true)
+    public AutorData teste() {
+        return this.autorRepository.teste();
     }
 }

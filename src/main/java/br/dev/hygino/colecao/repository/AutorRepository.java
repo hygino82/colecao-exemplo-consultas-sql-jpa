@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import br.dev.hygino.colecao.entity.Autor;
+import br.dev.hygino.colecao.entity.projections.AutorData;
 
 @Repository
 public interface AutorRepository extends JpaRepository<Autor, Long> {
@@ -27,4 +28,9 @@ public interface AutorRepository extends JpaRepository<Autor, Long> {
                         SELECT obj FROM Autor obj
                         """)
         Page<Autor> buscarTodos(Pageable pageable);
+
+        @Query(nativeQuery = true, value = """
+                        select * from autor where cod_autor = 1
+                        """)
+        AutorData teste();
 }
