@@ -30,7 +30,7 @@ public interface AutorRepository extends JpaRepository<Autor, Long> {
         Page<Autor> buscarTodos(Pageable pageable);
 
         @Query(nativeQuery = true, value = """
-                        select * from autor where cod_autor = 1
+                        select a.nome_autor as nome, a.cod_autor as id from autor a where cod_autor = 2
                         """)
         AutorData teste();
 }
